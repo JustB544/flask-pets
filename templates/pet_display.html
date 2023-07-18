@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block body%}
+
+<h1>{{pet.name}}</h1>
+<img src="{{pet.photo_url}}" />
+<p>
+    Species: {{pet.species}} <br>
+    {{pet.age if (pet.age != None) else ''}} {{'<br>' if (pet.age != None) else ''}}
+    {{pet.notes if (pet.notes != None) else ''}} {{'<br>' if (pet.age != None) else ''}}
+    {{'Available' if pet.available else 'Not Available'}}
+</p>
+<hr>
+<h2>Edit Pet</h2>
+<form method="POST">
+
+    {{ form.hidden_tag() }} <!--add type=hidden form fields -->
+    <div>
+        {{form.photo_url.label}}
+        {{form.photo_url}}
+    </div>
+    <div>
+        {{form.notes.label}}
+        {{form.notes}}
+    </div>
+    <div>
+        {{form.available.label}}
+        {{form.available}}
+    </div>
+
+    <button class="green_but">Submit</button>
+</form>
+
+{% endblock %}
